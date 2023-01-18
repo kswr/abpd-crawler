@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crawler", "Crawler\Crawler.csproj", "{22C02DA1-749F-4B1D-9230-09A4A41F6DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerTest", "CrawlerTest\CrawlerTest.csproj", "{A6352A8F-115B-44D4-BD03-3CD9419C5AB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22C02DA1-749F-4B1D-9230-09A4A41F6DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C02DA1-749F-4B1D-9230-09A4A41F6DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C02DA1-749F-4B1D-9230-09A4A41F6DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C02DA1-749F-4B1D-9230-09A4A41F6DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6352A8F-115B-44D4-BD03-3CD9419C5AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6352A8F-115B-44D4-BD03-3CD9419C5AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6352A8F-115B-44D4-BD03-3CD9419C5AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6352A8F-115B-44D4-BD03-3CD9419C5AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
