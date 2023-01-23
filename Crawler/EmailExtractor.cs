@@ -1,10 +1,21 @@
-﻿namespace Crawler;
+﻿using System.Text.RegularExpressions;
 
-public class EmailExtractor
+namespace Crawler;
+
+public abstract class EmailExtractor
 {
     public static List<Email> Extract(string text)
     {
-        return new List<Email>();
+        if (text is null) return new List<Email>();
+        return (from email in text.Split(' ', '<', '>', '!', '#', ';', '-', '*') 
+            where IsValidEmail(email) 
+            select Email.Of(email)).ToList();
+    }
+
+    private static bool IsValidEmail(string email)
+    {
+        var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        return regex.Match(email).Success;
     }
 }
 

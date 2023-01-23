@@ -18,5 +18,12 @@ public class EmailExtractorTests
         yield return new TestCaseData(null, new List<Email>());
         yield return new TestCaseData("", new List<Email>());
         yield return new TestCaseData("email@gmail.com", new List<Email> { Email.Of("email@gmail.com") });
+        yield return new TestCaseData("asdf<email@gmail.com", new List<Email> { Email.Of("email@gmail.com") });
+        yield return new TestCaseData("asdf email@gmail.com asdf", new List<Email> { Email.Of("email@gmail.com") });
+        yield return new TestCaseData("asdf email@gmail.com asdf#email@gmail.com", new List<Email>
+        {
+            Email.Of("email@gmail.com"),
+            Email.Of("email@gmail.com")
+        });
     }
 }
