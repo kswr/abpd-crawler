@@ -25,5 +25,9 @@ public class EmailExtractorTests
             Email.Of("email@gmail.com"),
             Email.Of("email@gmail.com")
         });
+        yield return new TestCaseData("<a href=\"mailto:pjatk@pja.edu.pl\"> pjatk@pja.edu.pl<br /></a>skype:", new List<Email>
+        {
+            Email.Of("pjatk@pja.edu.pl")
+        });
     }
 }

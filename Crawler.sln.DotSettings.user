@@ -3,5 +3,6 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::A6352A8F-115B-44D4-BD03-3CD9419C5AB0::net6.0::CrawlerTest.GreeterTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::A6352A8F-115B-44D4-BD03-3CD9419C5AB0::net6.0::CrawlerTest.EmailExtractorTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::A6352A8F-115B-44D4-BD03-3CD9419C5AB0::net6.0::CrawlerTest.CrawlerServiceTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

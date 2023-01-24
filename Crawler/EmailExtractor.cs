@@ -6,10 +6,14 @@ public abstract class EmailExtractor
 {
     public static List<Email> Extract(string text)
     {
-        if (text is null) return new List<Email>();
-        return (from email in text.Split(' ', '<', '>', '!', '#', ';', '-', '*') 
-            where IsValidEmail(email) 
-            select Email.Of(email)).ToList();
+        var emails = new List<Email>();
+        if (text is not null)
+        {
+            emails.AddRange(from email in text.Split(' ', '<', '>', '!', '#', ';', '-', '*', '"')
+                where IsValidEmail(email)
+                select Email.Of(email));
+        }
+        return emails;
     }
 
     private static bool IsValidEmail(string email)
@@ -19,15 +23,8 @@ public abstract class EmailExtractor
     }
 }
 
-public record Email
+public record Email(string EmailAddress)
 {
-    private string _email;
-
-    private Email(string email)
-    {
-        _email = email;
-    }
-
     public static Email Of(string email)
     {
         return new Email(email);
