@@ -1,13 +1,21 @@
 ﻿namespace Crawler;
 
-public class CrawlerService
+public static class CrawlerService
 {
-    public List<Email> Crawl(string[] args)
+    public static List<Email> Crawl(string[] args)
     {
-        var websiteUrl = args[0];
+        var websiteUrl = Url(args);
         var client = new HttpClient();
         var response = client.GetAsync(websiteUrl).Result;
         var body = response.Content.ReadAsStringAsync().Result;
         return EmailExtractor.Extract(body);
+    }
+
+    private static string Url(IReadOnlyList<string> args)
+    {
+        if (args.Count < 1) throw new ArgumentNullException();
+        var uri = args[0];
+        if (!Uri.IsWellFormedUriString(uri, UriKind.Absolute)) throw new ArgumentException();
+        return uri;
     }
 }
