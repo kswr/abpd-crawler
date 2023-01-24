@@ -9,7 +9,7 @@ public class CrawlerService
 
     private readonly HttpClient _client;
     
-    public List<Email> Crawl(string[] args)
+    public HashSet<Email> Crawl(string[] args)
     {
         var websiteUrl = Url(args);
         var response = _client.GetAsync(websiteUrl).Result;

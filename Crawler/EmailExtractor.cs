@@ -4,14 +4,13 @@ namespace Crawler;
 
 public abstract class EmailExtractor
 {
-    public static List<Email> Extract(string text)
+    public static HashSet<Email> Extract(string text)
     {
-        var emails = new List<Email>();
-        if (text is not null)
+        var emails = new HashSet<Email>();
+        if (text is null) return emails;
+        foreach (var email in text.Split(' ', '<', '>', '!', '#', ';', '-', '*', '"'))
         {
-            emails.AddRange(from email in text.Split(' ', '<', '>', '!', '#', ';', '-', '*', '"')
-                where IsValidEmail(email)
-                select Email.Of(email));
+            if (IsValidEmail(email)) emails.Add(Email.Of(email));
         }
         return emails;
     }
