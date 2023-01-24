@@ -1,12 +1,18 @@
 ﻿namespace Crawler;
 
-public static class CrawlerService
+public class CrawlerService
 {
-    public static List<Email> Crawl(string[] args)
+    public CrawlerService(HttpClient client)
+    {
+        _client = client;
+    }
+
+    private readonly HttpClient _client;
+    
+    public List<Email> Crawl(string[] args)
     {
         var websiteUrl = Url(args);
-        var client = new HttpClient();
-        var response = client.GetAsync(websiteUrl).Result;
+        var response = _client.GetAsync(websiteUrl).Result;
         var body = response.Content.ReadAsStringAsync().Result;
         return EmailExtractor.Extract(body);
     }
