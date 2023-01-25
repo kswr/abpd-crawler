@@ -10,7 +10,7 @@ public class CrawlerServiceTest
     public void CrawlPjatk()
     {
         var crawler = new CrawlerService(_httpClient);
-        var emails = crawler.Crawl(new[] { "https://pja.edu.pl/" });
-        Assert.That(emails, Has.Exactly(1).EqualTo(Email.Of("pjatk@pja.edu.pl")));
+        var result = crawler.Crawl(new[] { "https://pja.edu.pl/" });
+        Assert.That(result, Is.EqualTo(CrawlResult.Success(new HashSet<Email>{ Email.Of("pjatk@pja.edu.pl")})));
     }
 }

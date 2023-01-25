@@ -1,7 +1,4 @@
-﻿using System.Net;
-using System.Reflection.Metadata.Ecma335;
-
-namespace Crawler;
+﻿namespace Crawler;
 
 public class CrawlerApp
 {
@@ -9,10 +6,31 @@ public class CrawlerApp
     {
         var httpClient = new HttpClient();
         var crawlerService = new CrawlerService(httpClient);
-        var emails = crawlerService.Crawl(args);
-        if (emails.Count < 1) LogNoEmails();
-        else LogEmails(emails);
+        var result = crawlerService.Crawl(args);
+        HandleResult(result);
         httpClient.Dispose();
+    }
+
+    private static void HandleResult(CrawlResult result)
+    {
+        if (!result.Successful)
+        {
+            LogFailure();
+            return;
+        }
+
+        if (result.Result.Count < 1)
+        {
+            LogNoEmails();
+            return;
+        }
+        
+        LogEmails(result.Result);
+    }
+
+    private static void LogFailure()
+    {
+        Console.WriteLine("Błąd w czasie pobierania strony");
     }
 
     private static void LogNoEmails()
@@ -20,7 +38,7 @@ public class CrawlerApp
         Console.WriteLine("Nie znaleziono adresów email");
     }
 
-    public static void LogEmails(HashSet<Email> emails)
+    private static void LogEmails(HashSet<Email> emails)
     {
         foreach (var email in emails)
         {
